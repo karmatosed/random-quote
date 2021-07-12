@@ -30,9 +30,10 @@ import './editor.scss';
  * @return {WPElement} Element to render.
  */
 export default function Edit() {
+	var quotation = "This is a quote from a variable";
 	return (
 		<p { ...useBlockProps() }>
-			{ __( 'Random Quote – hello from the editor!', 'random-quote' ) }
+			{ quotation }
 		</p>
 	);
 }
