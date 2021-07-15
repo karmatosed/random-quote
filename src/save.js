@@ -12,7 +12,17 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
 import { useBlockProps } from '@wordpress/block-editor';
+const quotes = [
+	'Hello there', 
+	'I wandered lonely as a something', 
+	'Squirrel!', 
+	'Peace be', 
+	'Wooohooooo'
+];
 
+function randomQuote(quotes) {
+	return quotes[Math.floor(Math.random() * quotes.length)];
+ }
 /**
  * The save function defines the way in which the different attributes should
  * be combined into the final markup, which is then serialized by the block
@@ -24,11 +34,8 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 export default function save() {
 	return (
-		<p { ...useBlockProps.save() }>
-			{ __(
-				'Random Quote – hello from the saved content!',
-				'random-quote'
-			) }
-		</p>
+		<blockquote { ...useBlockProps.save() }>
+			{  randomQuote(quotes)  }
+		</blockquote>
 	);
 }

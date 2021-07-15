@@ -21,6 +21,18 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 import './editor.scss';
 
+const quotes = [
+	'Hello there', 
+	'I wandered lonely as a something', 
+	'Squirrel!', 
+	'Peace be', 
+	'Wooohooooo'
+];
+
+function randomQuote(quotes) {
+	return quotes[Math.floor(Math.random() * quotes.length)];
+ }
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -30,10 +42,9 @@ import './editor.scss';
  * @return {WPElement} Element to render.
  */
 export default function Edit() {
-	var quotation = "This is a quote from a variable";
 	return (
-		<p { ...useBlockProps() }>
-			{ quotation }
-		</p>
+		<blockquote { ...useBlockProps() }>
+			{ randomQuote(quotes) }
+		</blockquote>
 	);
 }
